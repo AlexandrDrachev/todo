@@ -1,0 +1,42 @@
+
+.one-task {
+    margin-top: 15px;
+}
+
+.span {
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: outset;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.span-done {
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: outset;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: line-through;
+}
+
+.span-important {
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: outset;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+}
+
+.span-done-important {
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: outset;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+    text-decoration: line-through;
+}

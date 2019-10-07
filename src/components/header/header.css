@@ -1,0 +1,16 @@
+
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-header {
+    margin-bottom: 0;
+}
+
+.counter {
+    font-size: 15px;
+    font-weight: bold;
+}

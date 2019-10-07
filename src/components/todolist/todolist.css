@@ -1,0 +1,14 @@
+@import "task-list/task-list.css";
+
+.todo-list {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.input {
+    height: 20px;
+    border-style: ridge;
+    border-radius: 5px;
+    border-color: darkgray;
+    font-size: 15px;
+}

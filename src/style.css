@@ -1,0 +1,21 @@
+@import "components/header/header.css";
+@import "components/todolist/todolist.css";
+@import "components/add-task/add-task.css";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.todo {
+    position: absolute;
+    height: 418px;
+    width: 300px;
+    border-style: double;
+    border-color: black;
+    border-radius: 10px;
+    left: 70px;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+}
