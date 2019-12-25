@@ -1,0 +1,98 @@
+
+.content-container
+  display flex
+  justify-content flex-start
+  width 95%
+  height 100%
+  margin 10px 20px
+  padding 5px
+  .content-rel
+    width 100%
+    padding 5px
+    display flex
+    flex-direction column
+    align-items center
+    position relative
+    border-radius 3px
+    .content-abs
+      position absolute
+      left 0
+      top 0
+      bottom 0
+      right 0
+      overflow auto
+      display flex
+      flex-direction column
+      align-items center
+      padding 10px
+      &::-webkit-scrollbar
+        width 0
+      .new-post-item
+        display flex
+        flex-direction column
+        padding 5px
+        align-items flex-start
+        position relative
+        .new-post
+          display flex
+          flex-direction column
+          align-items center
+          .new-post-img-div
+            border 1px solid black
+            width 710px
+            height 390px
+            margin-bottom 10px
+            box-shadow 0 0 10px white
+            .new-post-img
+              width: 100%;
+              height: 100%;
+          .new-post-info
+            text-align justify
+            margin 10px 0 0 0
+            padding 5px
+            font-weight bold
+            width 710px
+            box-shadow 0 0 10px white
+            background rgba(0, 0, 0, 0.75)
+            border-radius 3px
+            .info-text
+              color white
+            .count-comment
+              color orangered
+              margin-left 30px
+              &:hover
+                cursor pointer
+        .added-comment
+          margin 10px
+          display flex
+          width 100%
+          .new-comment
+            margin 0 5px 0 0
+          button
+            height 30px
+
+.comment
+  box-shadow 0 0 10px white
+  padding 5px
+  color yellow
+  max-width 710px
+  background rgba(0, 0, 0, 0.75)
+  .user-identificator
+    display flex
+    justify-content flex-start
+    .user-avatar
+      height 30px
+      width 30px
+      margin 0 10px 5px 0
+  .btn-reply-block
+    display flex
+    justify-content flex-end
+    margin 0 10px
+    span
+      margin 0 10px 0 0
+      display flex
+      flex-direction column
+      justify-content center
+      color green
+      &:hover
+        cursor pointer
