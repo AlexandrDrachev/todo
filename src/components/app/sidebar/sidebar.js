@@ -1,15 +1,19 @@
-import React, { useEffect, useCallback, useMemo } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
-import { testSidebarValue, getUsersData } from "./sidebar-action";
+import { getUsersData } from "./sidebar-action";
+import { onToggleAutorisation } from "../../autorisation/autorisation-action";
 import { useStateValue } from "../../../state";
 import ApiService from "../../../services";
 
 const Sidebar = () => {
 
   const { state, dispatch } = useStateValue();
-  const { users } = state;
+  const { users, userAutorisation } = state;
   const newUsers = useCallback((result) => dispatch(getUsersData(result)), [dispatch]);
-  const testFunc = useCallback(() => dispatch(testSidebarValue('sidebar')), [dispatch]);
+  const onChangeUser = (id) => {
+    const userObj = users.find((user) => user.userId === id);
+    return dispatch(onToggleAutorisation(userObj));
+  };
 
   useEffect(() => {
     let cancel = false;
@@ -21,12 +25,15 @@ const Sidebar = () => {
     fetchData();
 
     return () => cancel = true;
-  }, [dispatch]);
+  }, [dispatch, newUsers]);
 
   const userOnLine = () => {
     return users.map((user) => {
       return (
-        <div key={user.userId} className="user-item">
+        <div
+          onClick={() => onChangeUser(user.userId)}
+          key={user.userId}
+          className="user-item">
           <div className="div-ava">
             <img className="sidebar-avatar" alt=" not found" src={user.userAvatar}/>
           </div>

@@ -8,9 +8,8 @@ export const testContentValue = (text) => {
   };
 };
 
-export const test2ContentValue = (text) => {
+export const onToggleAllCommentsView = () => {
   return {
-    type: 'TEST2_VALUE_CONTENT',
-    payload: text
+    type: 'ON_TOGGLE_ALL_COMMENTS_VIEW'
   };
 };

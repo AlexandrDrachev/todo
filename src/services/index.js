@@ -21,7 +21,8 @@ export default class ApiService {
   transformUser = (user) => {
     return {
       userId: user.id,
-      userName: user.name
+      userName: user.name,
+      password: 111
     };
   };
 

@@ -18,6 +18,36 @@ body .app {
   padding: 5px;
   box-shadow: 0 0 10px #fff;
   border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+.header h3 {
+  margin: 30px 10px 0 10px;
+  font-weight: bold;
+  color: #ff4500;
+  font-size: 50px;
+}
+.header h3:hover {
+  cursor: pointer;
+}
+.header .user-login-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 5px 10px;
+}
+.header .user-login-details .user-exit {
+  font-weight: bold;
+  color: #f00;
+}
+.header .user-login-details .user-exit:hover {
+  cursor: pointer;
+}
+.header .user-login-details .user-login {
+  font-weight: bold;
+  font-size: 20px;
+  color: #7fff00;
 }
 .side-bar-container {
   position: absolute;
@@ -108,7 +138,6 @@ body .app {
   align-items: center;
 }
 .content-container .content-rel .content-abs .new-post-item .new-post .new-post-img-div {
-  border: 1px solid #000;
   width: 710px;
   height: 390px;
   margin-bottom: 10px;
@@ -125,7 +154,7 @@ body .app {
   font-weight: bold;
   width: 710px;
   box-shadow: 0 0 10px #fff;
-  background: rgba(0,0,0,0.75);
+  background-color: rgba(0,0,0,0.75);
   border-radius: 3px;
 }
 .content-container .content-rel .content-abs .new-post-item .new-post .new-post-info .info-text {
@@ -148,6 +177,11 @@ body .app {
 }
 .content-container .content-rel .content-abs .new-post-item .added-comment button {
   height: 30px;
+}
+.content-container .content-rel .content-abs .new-post-item .comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .comment {
   box-shadow: 0 0 10px #fff;
@@ -179,4 +213,46 @@ body .app {
 }
 .comment .btn-reply-block span:hover {
   cursor: pointer;
+}
+.backdrop-autorisation {
+  position: fixed;
+  background: rgba(0,0,0,0.75);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.backdrop-autorisation .modal-autorisation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 0 10px 5px #ffa500;
+  min-height: 200px;
+  min-width: 300px;
+  color: #fff;
+}
+.backdrop-autorisation .modal-autorisation .inp-autorisation {
+  margin: 10px 0;
+  width: 90%;
+}
+.backdrop-autorisation .modal-autorisation .checkbox {
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  color: #fff;
+}
+.backdrop-autorisation .modal-autorisation .autorisation-btn-block {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.backdrop-autorisation .modal-autorisation .autorisation-btn-block .btn-autorisation {
+  margin: 0 5px;
 }

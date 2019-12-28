@@ -3,8 +3,10 @@ import React, { createContext, useContext, useReducer } from 'react';
 import { contentInitialState, contentReducer } from "../components/app/content/content-reducer";
 import { headerInitialState, headerReducer } from "../components/app/header/header-reducer";
 import { sidebarInitialState, sidebarReducer } from "../components/app/sidebar/sidebar-reducer";
+import { autorisationInitialState, autorisationReducer } from "../components/autorisation/autorisation-reducer";
 
 const initialState = {
+  ...autorisationInitialState,
   ...contentInitialState,
   ...headerInitialState,
   ...sidebarInitialState
@@ -13,6 +15,7 @@ const initialState = {
 export const StateContext = createContext(initialState);
 
 const Actions = {
+  ...autorisationReducer,
   ...contentReducer,
   ...headerReducer,
   ...sidebarReducer
