@@ -1,6 +1,5 @@
 
 export const onToggleAutorisation = (userObj) => {
-  console.log('auturisation');
   return {
     type: 'ON_TOGGLE_AUTORISATION',
     payload: userObj
@@ -8,7 +7,6 @@ export const onToggleAutorisation = (userObj) => {
 };
 
 export const onToggleRegistration = () => {
-  console.log('reAuturisation');
   return {
     type: 'ON_TOGGLE_REGISTRSTION'
   };

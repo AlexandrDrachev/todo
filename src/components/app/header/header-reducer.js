@@ -10,11 +10,5 @@ export const headerReducer =  {
       ...state,
       testValueHeader: action.payload
     };
-  },
-  'TEST2_VALUE_HEADER': (state, action) => {
-    return {
-      ...state,
-      testValueHeader: action.payload
-    };
   }
 };

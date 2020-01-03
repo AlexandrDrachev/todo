@@ -175,8 +175,16 @@ body .app {
 .content-container .content-rel .content-abs .new-post-item .added-comment .new-comment {
   margin: 0 5px 0 0;
 }
-.content-container .content-rel .content-abs .new-post-item .added-comment button {
-  height: 30px;
+.content-container .content-rel .content-abs .new-post-item .added-comment .btn-new-comment-block {
+  display: flex;
+  flex-direction: column;
+}
+.content-container .content-rel .content-abs .new-post-item .added-comment .btn-new-comment-block button {
+  font-size: 12px;
+  padding: 0;
+  margin: 1px;
+  width: 90px;
+  height: 28px;
 }
 .content-container .content-rel .content-abs .new-post-item .comments-container {
   display: flex;
@@ -187,7 +195,7 @@ body .app {
   box-shadow: 0 0 10px #fff;
   padding: 5px;
   color: #ff0;
-  max-width: 710px;
+  width: 710px;
   background: rgba(0,0,0,0.75);
 }
 .comment .user-identificator {
@@ -213,6 +221,18 @@ body .app {
 }
 .comment .btn-reply-block span:hover {
   cursor: pointer;
+}
+.comment-answers .answer {
+  box-shadow: 0 0 10px #fff;
+  width: 80%;
+  margin: 10px 0 0 115px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5px;
+  background: rgba(0,0,0,0.75);
 }
 .backdrop-autorisation {
   position: fixed;

@@ -5,10 +5,3 @@ export const testValueHeader = (text) => {
     payload: text
   };
 };
-
-export const test2ValueHeader = (text) => {
-  return {
-    type: 'TEST2_VALUE_HEADER',
-    payload: text
-  };
-};

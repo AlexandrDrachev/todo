@@ -1,32 +1,31 @@
-import React, { useEffect, useCallback } from 'react';
+import React from 'react';
 
 import { useStateValue } from "../../state";
-import { onToggleAutorisation, onToggleRegistration, onToggleReAutorisation, onToggleSaveMe } from "./autorisation-action";
+import { onToggleAutorisation, onToggleRegistration, onToggleReAutorisation } from "./autorisation-action";
 
 const Autorisation = () => {
 
   const { state, dispatch } = useStateValue();
-  const { autorisation, registration, reAutorisation, users, userAutorisation } = state;
+  const { autorisation, registration, reAutorisation, users } = state;
 
-  let login, password, passwordAgain, email, saveme = false;
-  console.log('users: ', users);
+  let login, password, passwordAgain, email;
+  if (passwordAgain && email) {
+    console.log(passwordAgain, email);
+  }
 
-  const onToggleActiveModal = () => {
-    return reAutorisation ? dispatch(onToggleReAutorisation()) : dispatch(onToggleAutorisation());
-  };
+  // const onToggleActiveModal = () => {
+  //   return reAutorisation ? dispatch(onToggleReAutorisation()) : dispatch(onToggleAutorisation());
+  // };
 
   const onToggleRegActiveModal = () => {
     return registration ? dispatch(onToggleReAutorisation()) : dispatch(onToggleRegistration());
   };
 
   const getLogin = () => {
-    const checkUser = users.find((user) => user.userName.toString() === login.toString() && user.password.toString() === password.toString());
-    console.log('checkUser: ', checkUser);
-    console.log('login: ', login);
-    console.log('password: ', password);
+    const checkUser = users.find((user) => user.userName.toString() === login.toString() &&
+                                           user.password.toString() === password.toString());
     return checkUser ? dispatch(onToggleAutorisation(checkUser)) : dispatch(onToggleReAutorisation());
   };
-  console.log('user autorisation: ', userAutorisation);
 
   return (
     <div className="backdrop-autorisation">
@@ -55,7 +54,7 @@ const Autorisation = () => {
         {registration || !reAutorisation ?
             <div className="form-check checkbox">
               <input
-                onChange={(e) => dispatch(onToggleSaveMe(e.target.checked))}
+                onChange={() => {}}
                 type="checkbox"
                 className="form-check-input"/>
               <span >Save me</span>
