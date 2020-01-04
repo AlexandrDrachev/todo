@@ -39,3 +39,17 @@ export const renderNewComment = (commentObj) => {
     payload: commentObj
   };
 };
+
+export const onToggleEntryFieldComment = (postId) => {
+  return {
+    type: 'ON_TOGGLE_ENTRY_FIELD_COMMENT',
+    payload: postId
+  };
+};
+
+export const onToggleEntryFieldAnswer = (commentId) => {
+  return {
+    type: 'ON_TOGGLE_ENTRY_FIELD_ANSWER',
+    payload: commentId
+  };
+};

@@ -16,7 +16,7 @@ const Comment = ({ commentId }) => {
     if (allAnswersView) {
       return answersSort.map((answer) => {
         const { answerId } = answer;
-        return <Answer key={answerId} answerId={answerId}/>
+        return <Answer key={answerId} answerId={answerId} commentId={commentId}/>
       });
     }
     return null;

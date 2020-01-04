@@ -3,6 +3,7 @@ export const contentInitialState = {
   testValueContent: 'test value Content true',
   news: [
     {
+      entryFieldComment: false,
       allCommentsView: false,
       postId: 1,
       postImgUrl: 'https://itelon.ru/upload/iblock/829/news_9-06.JPG',
@@ -11,6 +12,7 @@ export const contentInitialState = {
         'или чья работа тесно связана с этой сферой.'
     },
     {
+      entryFieldComment: false,
       allCommentsView: false,
       postId: 2,
       postImgUrl: 'https://telegraf.com.ua/files/2015/08/1439199725_383877036.jpg',
@@ -22,6 +24,7 @@ export const contentInitialState = {
   newCommentInputText: '',
   comments: [
     {
+      entryFieldAnswer: false,
       allAnswersView: false,
       postIdAddress: 1,
       commentId: 1,
@@ -31,6 +34,7 @@ export const contentInitialState = {
         'tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium'
     },
     {
+      entryFieldAnswer: false,
       allAnswersView: false,
       postIdAddress: 1,
       commentId: 2,
@@ -40,6 +44,7 @@ export const contentInitialState = {
       'laudantium enim quasi est quidem magnam voluptate ipsam eos '
     },
     {
+      entryFieldAnswer: false,
       allAnswersView: false,
       postIdAddress: 2,
       commentId: 3,
@@ -49,6 +54,7 @@ export const contentInitialState = {
         'tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium'
     },
     {
+      entryFieldAnswer: false,
       allAnswersView: false,
       postIdAddress: 2,
       commentId: 4,
@@ -61,11 +67,23 @@ export const contentInitialState = {
   answers: [
     {
       commentIdAddress: 1,
+      answerIdAddress: undefined,
       answerId: 1,
       answerAuthor: 'Ervin Howell',
+      authorAvatar: 'https://via.placeholder.com/150/771796',
       answerAuthorAddress: 'Leanne Graham',
       answerText: 'delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus ' +
         'naccusamus in eum beatae sit nvel qui neque voluptates ut commodi qui incidunt nut animi commodi'
+    },
+    {
+      commentIdAddress: undefined,
+      answerIdAddress: 1,
+      answerId: 2,
+      answerAuthor: 'Patricia Lebsack',
+      authorAvatar: 'https://via.placeholder.com/150/771796',
+      answerAuthorAddress: 'Leanne Graham',
+      answerText: 'tempora quo necessitatibus dolor quam autem quasi reiciendis et nam sapiente accusantium' +
+        'laudantium enim quasi est quidem magnam voluptate ipsam eos '
     }
   ]
 };
@@ -89,6 +107,30 @@ const getUpdateComment = (state, payload) => {
         ...comment,
         allAnswersView: !comment.allAnswersView
       }
+    }
+    return comment;
+  });
+};
+
+const toggleEntryFieldComment = (state, payload) => {
+  return state.news.map((post) => {
+    if (post.postId === payload) {
+      return {
+        ...post,
+        entryFieldComment: !post.entryFieldComment
+      };
+    }
+    return post;
+  });
+};
+
+const toggleEntryFieldAnswer = (state, payload) => {
+  return state.comments.map((comment) => {
+    if (comment.commentId === payload) {
+      return {
+        ...comment,
+        entryFieldAnswer: !comment.entryFieldAnswer
+      };
     }
     return comment;
   });
@@ -133,6 +175,18 @@ export const contentReducer =  {
     return {
       ...state,
       comments: getUpdateComment(state, action.payload)
+    };
+  },
+  'ON_TOGGLE_ENTRY_FIELD_COMMENT': (state, action) => {
+    return {
+      ...state,
+      news: toggleEntryFieldComment(state, action.payload)
+    };
+  },
+  'ON_TOGGLE_ENTRY_FIELD_ANSWER': (state, action) => {
+    return {
+      ...state,
+      comments: toggleEntryFieldAnswer(state, action.payload)
     };
   }
 };
