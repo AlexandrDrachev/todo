@@ -8,7 +8,11 @@ import Autorisation from "../../autorisation";
 const Content = () => {
 
   const { state } = useStateValue();
-  const { news, autorisation } = state;
+  const { posts, autorisation } = state;
+  const newPosts = [];
+  for (let i in posts) {
+    newPosts.push(posts[i])
+  }
 
   return (
     <div className="content-rel">
@@ -17,7 +21,7 @@ const Content = () => {
         {!autorisation ? <Autorisation /> : null}
       </div>
       <div className="content-abs">
-        {news.map((post) => {
+        {newPosts.map((post) => {
           const { postId } = post;
           return <NewPost key={postId} postId={postId} />
         })}

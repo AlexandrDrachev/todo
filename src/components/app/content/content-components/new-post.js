@@ -2,22 +2,28 @@ import React from 'react';
 
 import { useStateValue } from "../../../../state";
 import { onToggleAllCommentsView, onCangeNewCommentText,
-         defaultCommentInputText, renderNewComment, onToggleEntryFieldComment } from "../content-action";
+         defaultCommentInputText, renderNewComment, onToggleEntryFieldComment, onToggleAllCommentsView1 } from "../content-action";
 import Comment from "./comment";
+import InputText from "./input-text";
 
 const NewPost = ({ postId }) => {
 
   const { state, dispatch } = useStateValue();
-  const { news, comments, newCommentInputText, userAutorisation } = state;
+  const { news, posts, comments, newCommentInputText, userAutorisation } = state;
 
   const post = news.find((post) => post.postId === postId);
   const countComments = comments.filter((comment) => comment.postIdAddress === postId);
-  // let inputText = null;
-  let showComments = post.allCommentsView;
+
+  // let showComments = post.allCommentsView;
+  let showComments = posts[postId].allCommentsView;
   let showInput = post.entryFieldComment;
 
+  const funcTest = () => {
+    dispatch(onToggleAllCommentsView1(postId));
+    console.log(posts[postId].allCommentsView);
+  };
+
   const onAddedComment = (e) => {
-    // inputText = e.target.value;
     return dispatch(onCangeNewCommentText(e.target.value));
   };
 
@@ -66,12 +72,16 @@ const NewPost = ({ postId }) => {
     }
   };
 
+  const dispatchAction = () => {
+    return dispatch(onToggleEntryFieldComment(postId));
+  };
+
   return (
     <div className="new-post-item-rel">
       <div className="new-post-item">
         <div className="new-post">
           <div className="new-post-img-div">
-            <img className="new-post-img" src={post.postImgUrl} alt="not found"/>
+            <img className="new-post-img" src={post.postImgUrl} alt="not found" onClick={funcTest}/>
           </div>
           <div className="new-post-info">
             <div className="info-text" >
@@ -92,33 +102,10 @@ const NewPost = ({ postId }) => {
             </div>
           </div>
         </div>
-        {
-          showInput ?
-            <form
-              onSubmit={onSubmit}
-              className="added-comment">
-          <textarea
-            value={newCommentInputText}
-            onChange={(e) => onAddedComment(e)}
-            className="form-control new-comment"
-            id="exampleFormControlTextarea1"
-            rows="2"
-            placeholder="you comment" />
-              <div className="btn-new-comment-block">
-                <button
-                  className="btn btn-primary btn-sm">
-                  added comment
-                </button>
-                <button
-                  onClick={() => {}}
-                  className="btn btn-primary btn-sm">
-                  auto comment
-                </button>
-                <span onClick={() => dispatch(onToggleEntryFieldComment(postId))}>
-          x</span>
-              </div>
-            </form> : null
-        }
+        { showInput ? <InputText funcSubmit={onSubmit}
+                       commentInputText={newCommentInputText}
+                       funcAddedComment={onAddedComment}
+                       funcDispatchAction={dispatchAction} /> : null }
         <div className="comments-container">
           {viewComments()}
         </div>

@@ -208,6 +208,7 @@ body .app {
   align-items: flex-start;
 }
 .comment {
+  position: relative;
   box-shadow: 0 0 10px #fff;
   padding: 5px;
   color: #ff0;
@@ -276,6 +277,14 @@ body .app {
 }
 .comment-answers .answer .btn-answer-block button {
   margin-right: 10px;
+}
+.reply {
+  position: absolute;
+  right: -165px;
+  top: 0;
+  box-shadow: 0 0 10px #fff;
+  min-width: 150px;
+  min-height: 200px;
 }
 .backdrop-autorisation {
   position: fixed;

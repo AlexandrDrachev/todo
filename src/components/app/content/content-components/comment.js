@@ -3,6 +3,7 @@ import React from 'react';
 import { useStateValue } from "../../../../state";
 import Answer from "./answer";
 import { onToggleAllAnswersView } from "../content-action";
+import Reply from "./reply";
 
 const Comment = ({ commentId }) => {
 
@@ -11,6 +12,7 @@ const Comment = ({ commentId }) => {
   const commentObj = comments.find((comment) => comment.commentId === commentId);
   const answersSort = answers.filter((answer) => answer.commentIdAddress === commentId);
   const { allAnswersView } = commentObj;
+  let reply = false;
 
   const viewAnswers = () => {
     if (allAnswersView) {
@@ -25,6 +27,7 @@ const Comment = ({ commentId }) => {
   return (
     <div className="new-post-comments">
       <div className="comment">
+        {reply ? <Reply /> : null}
         <div className="user-identificator">
           <img className="user-avatar" src={commentObj.authorAvatar} alt="not found"/>
           <span>{commentObj.commentAuthor}</span>

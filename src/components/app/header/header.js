@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <h3>News IT</h3>
+      <h3>News</h3>
       {autorisation ? userLogin() : null}
     </div>
   );

@@ -13,6 +13,13 @@ export const onToggleAllCommentsView = (postId) => {
   };
 };
 
+export const onToggleAllCommentsView1 = (postId) => {
+  return {
+    type: 'ON_TOGGLE_ALL_COMMENTS_VIEW_',
+    id: postId
+  };
+};
+
 export const onToggleAllAnswersView = (commentId) => {
   return {
     type: 'ON_TOGGLE_ALL_ANSWERS_VIEW',
