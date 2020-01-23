@@ -9,8 +9,13 @@ const Comment = ({ commentId }) => {
 
   const { state, dispatch } = useStateValue();
   const { comments, answers } = state;
-  const commentObj = comments.find((comment) => comment.commentId === commentId);
-  const answersSort = answers.filter((answer) => answer.commentIdAddress === commentId);
+  // const commentObj = comments.find((comment) => comment.commentId === commentId);
+  const commentObj = comments[commentId];
+  let answersArr = [];
+  for (let i in answers) {
+    answersArr.push(answers[i]);
+  }
+  const answersSort = answersArr.filter((answer) => answer.commentIdAddress === commentId);
   const { allAnswersView } = commentObj;
   let reply = false;
 

@@ -6,16 +6,16 @@ export const testContentValue = (text) => {
   };
 };
 
+// export const onToggleAllCommentsView = (postId) => {
+//   return {
+//     type: 'ON_TOGGLE_ALL_COMMENTS_VIEW',
+//     payload: postId
+//   };
+// };
+
 export const onToggleAllCommentsView = (postId) => {
   return {
     type: 'ON_TOGGLE_ALL_COMMENTS_VIEW',
-    payload: postId
-  };
-};
-
-export const onToggleAllCommentsView1 = (postId) => {
-  return {
-    type: 'ON_TOGGLE_ALL_COMMENTS_VIEW_',
     id: postId
   };
 };
@@ -23,7 +23,7 @@ export const onToggleAllCommentsView1 = (postId) => {
 export const onToggleAllAnswersView = (commentId) => {
   return {
     type: 'ON_TOGGLE_ALL_ANSWERS_VIEW',
-    payload: commentId
+    id: commentId
   };
 };
 
@@ -40,9 +40,10 @@ export const defaultCommentInputText = () => {
   };
 };
 
-export const renderNewComment = (commentObj) => {
+export const renderNewComment = (commentId, commentObj) => {
   return {
     type: 'RENDER_NEW_COMMENT',
+    id: commentId,
     payload: commentObj
   };
 };
@@ -50,7 +51,7 @@ export const renderNewComment = (commentObj) => {
 export const onToggleEntryFieldComment = (postId) => {
   return {
     type: 'ON_TOGGLE_ENTRY_FIELD_COMMENT',
-    payload: postId
+    id: postId
   };
 };
 

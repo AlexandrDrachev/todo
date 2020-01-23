@@ -22,6 +22,7 @@ const Actions = {
 };
 
 const reducer = (state, action) => {
+  console.log(action);
 
   const actions = Actions[action.type];
   const update = actions(state, action);

@@ -1,27 +1,26 @@
 import React from 'react';
 
 import { useStateValue } from "../../../../state";
-import { onToggleAllCommentsView, onCangeNewCommentText,
-         defaultCommentInputText, renderNewComment, onToggleEntryFieldComment, onToggleAllCommentsView1 } from "../content-action";
+import { onCangeNewCommentText,
+         defaultCommentInputText, renderNewComment, onToggleEntryFieldComment, onToggleAllCommentsView } from "../content-action";
 import Comment from "./comment";
 import InputText from "./input-text";
 
 const NewPost = ({ postId }) => {
 
   const { state, dispatch } = useStateValue();
-  const { news, posts, comments, newCommentInputText, userAutorisation } = state;
+  const { posts, comments, newCommentInputText, userAutorisation } = state;
 
-  const post = news.find((post) => post.postId === postId);
-  const countComments = comments.filter((comment) => comment.postIdAddress === postId);
-
-  // let showComments = post.allCommentsView;
-  let showComments = posts[postId].allCommentsView;
-  let showInput = post.entryFieldComment;
-
-  const funcTest = () => {
-    dispatch(onToggleAllCommentsView1(postId));
-    console.log(posts[postId].allCommentsView);
-  };
+  let commentsArr = [];
+  for (let i in comments) {
+    commentsArr.push(comments[i]);
+  }
+  const commentsSort = commentsArr.filter((comment) => comment.postIdAddress === postId);
+  const commentsReverse = commentsSort.reverse();
+  const post = posts[postId];
+  const countComments = commentsReverse.length;
+  const showComments = posts[postId].allCommentsView;
+  const showInput = posts[postId].entryFieldComment;
 
   const onAddedComment = (e) => {
     return dispatch(onCangeNewCommentText(e.target.value));
@@ -30,9 +29,9 @@ const NewPost = ({ postId }) => {
   const onSubmit = (e) => {
     if (newCommentInputText) {
       e.preventDefault();
-      dispatch(renderNewComment(renderComment(
+      dispatch(renderNewComment(commentsArr.length + 1,renderComment(
         postId,
-        comments.length + 1,
+        commentsArr.length + 1,
         userAutorisation.userName,
         userAutorisation.userAvatar,
         newCommentInputText
@@ -58,8 +57,6 @@ const NewPost = ({ postId }) => {
   };
 
   const viewComments = () => {
-    const commentsSort = comments.filter((comment) => comment.postIdAddress === postId);
-    const commentsReverse = commentsSort.reverse();
     if (showComments) {
       return commentsReverse.map((comment) => {
         const { commentId, postIdAddress } = comment;
@@ -81,7 +78,7 @@ const NewPost = ({ postId }) => {
       <div className="new-post-item">
         <div className="new-post">
           <div className="new-post-img-div">
-            <img className="new-post-img" src={post.postImgUrl} alt="not found" onClick={funcTest}/>
+            <img className="new-post-img" src={post.postImgUrl} alt="not found"/>
           </div>
           <div className="new-post-info">
             <div className="info-text" >
@@ -89,10 +86,10 @@ const NewPost = ({ postId }) => {
             </div>
             <div className="comments-operation">
               {
-                countComments.length > 1 ?
+                countComments > 1 ?
                   <span
                     onClick={() => dispatch(onToggleAllCommentsView(postId))}>
-              {!showComments ? `view all comments ${countComments.length}` :
+              {!showComments ? `view all comments ${countComments}` :
                 `hide comments`}
             </span> : null
               }

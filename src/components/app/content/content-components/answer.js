@@ -6,12 +6,15 @@ const Answer = ({ answerId, commentId }) => {
   const { state, dispatch } = useStateValue();
   const { answers } = state;
 
-  const answersSort = answers.filter((answer) => answer.commentIdAddress === commentId);
-  console.log('answersSort:', answersSort);
+  let answersArr = [];
+  for (let i in answers) {
+    answersArr.push(answers[i]);
+  }
+  const answersSort = answersArr.filter((answer) => answer.commentIdAddress === commentId);
   const answerToAnswer = answersSort.find((answer) => answer.answerIdAddress === answerId);
+  console.log('answerToAnswer:', answerToAnswer);
   const answerToComment = answersSort.find((answer) => answer.commentIdAddress === commentId);
-  console.log('answerToAnswer: ', answerToAnswer);
-  console.log('answerToComment: ', answerToComment);
+  console.log('answerToComment:', answerToComment);
 
   let a = [{id: 1}, {id: 2}, {id: 3}];
   let res = a.reduce((a, b) => {
