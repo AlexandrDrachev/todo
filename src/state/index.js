@@ -22,18 +22,18 @@ const Actions = {
 };
 
 const reducer = (state, action) => {
-  console.log(action);
-
+  
+  console.log('action', action);
   const actions = Actions[action.type];
   const update = actions(state, action);
-  return {...state, ...update};
+  return { ...state, ...update };
 };
 
 export const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <StateContext.Provider value={{ state, dispatch }}>
-      { children }
+      {children}
     </StateContext.Provider>
   );
 };
